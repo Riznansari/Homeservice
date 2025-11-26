@@ -193,7 +193,71 @@
 <body>
 
 <header>Professional Service Provider</header>
+<style>
+    /* Full-width banner */
+    .top-slider {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background: #000;
+        height: 180px; /* Adjust height */
+    }
 
+    /* Scrolling container */
+    .slide-track {
+        display: flex;
+        width: calc(250px * 10); /* imageWidth × totalImages */
+        animation: scroll 20s linear infinite;
+    }
+
+    /* Individual images */
+    .slide {
+        width: 250px;      /* image width */
+        height: 180px;     /* image height */
+        margin-right: 10px;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* Animation keyframes */
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 Image Slider Start -->
+<div class="top-slider">
+    <div class="slide-track">
+
+        <!-- Add your images -->
+        <div class="slide"><img src="https://via.placeholder.com/250x180/ff4444/ffffff?text=Image1"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/4285f4/ffffff?text=Image2"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/00c851/ffffff?text=Image3"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/ffbb33/ffffff?text=Image4"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/aa66cc/ffffff?text=Image5"></div>
+
+        <!-- Duplicate images for smooth infinite scroll -->
+        <div class="slide"><img src="https://via.placeholder.com/250x180/ff4444/ffffff?text=Image1"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/4285f4/ffffff?text=Image2"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/00c851/ffffff?text=Image3"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/ffbb33/ffffff?text=Image4"></div>
+        <div class="slide"><img src="https://via.placeholder.com/250x180/aa66cc/ffffff?text=Image5"></div>
+
+    </div>
+</div>
+<!-- 🔥 Image Slider End -->
+
+</body>
+</html>
 <!-- Poster Section -->
 <section class="poster-section">
     <img src="https://github.com/Riznansari/Homeservice/blob/main/imp1.jpeg?raw=true" alt="Poster 1" width="400">
@@ -420,26 +484,8 @@
 
 <!-- YOUR WEBSITE CONTENT ABOVE THIS -->
 
-<!-- ---------------- FOOTER START ---------------- -->
-<footer>
-    <h2>About the Developer</h2>
-    <p><strong>Name:</strong> Zaid Khan</p>
-    <p><strong>Role:</strong> Website Developer & System Implementer</p>
-    <p><strong>Contact:</strong> Email: khanzack355@gmail.com</p>
-    <p><strong>Name:</strong> Rizwan Ansari</p>
-    <p><strong>Role:</strong> Deployment and hosting </p>
-    <p><strong>Contact:</strong> Email: rizwan.ansari@zohomail.com</p>
-    
-
-    <div class="footer-links">
-       <a href="https://www.linkedin.com/in/zaid-khan-pathan-1671b22b2"> Zaid Khan LinkedIn</a>
-
-        <a href="https://www.linkedin.com/in/rizwan-a-453916223"> Rizwan Ansari LinkedIn</a>
-        
-    </div>
-
     <div class="footer-credit">
-        © 2025 Home Service. Designed & Developed by Zaid Khan.
+        © 2025 Home Service. Designed & Developed by Zaid&Riz.
     </div>
 </footer>
 <!-- ---------------- FOOTER END ---------------- -->
@@ -449,6 +495,7 @@
 
 </body>
 </html>
+
 
 
 
