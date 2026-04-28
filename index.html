@@ -236,65 +236,7 @@
 </head>
 
 <body>
-<div id="database-content">Loading data from Supabase...</div>
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-<h2>Meet Our Expert</h2>
-    <div id="expert-info">Loading data...</div>
-<script>
-   const SUPABASE_URL = 'https://cxfulqhalztsxhtbxjqg.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_FecGnNZAmcxza94eyX6TIw_rZmmhAAz';
-    // Initialize the connection
-
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-
-
-    // Function to pull data from your 'services' table
-
-    async function getServicesData() {
-
-        try {
-
-            const { data, error } = await supabase.from('services').select('*');
-
-
-
-            if (error) {
-
-                console.error("Supabase Error:", error);
-
-                document.getElementById('database-content').innerText = "Error connecting to database. Check console.";
-
-                return;
-
-            }
-
-
-
-            // If successful, display the data on the screen
-
-            let htmlOutput = "<h3>Our Services from Database:</h3><ul>";
-
-            data.forEach(service => {
-
-                htmlOutput += `<li><strong>${service.name}</strong> - ${service.marketing_tag} (${service.availability})</li>`;
-
-            }); htmlOutput += "</ul>";
-            document.getElementById('database-content').innerHTML = htmlOutput;
-        } catch (err) {
-            console.error("System Error:", err);
-        }
-
-    }
-    // Run the function
-  getServicesData();
-
-</script>
 <!-- 🔥 Image Slider Start -->
 <div class="top-slider">
     <div class="slide-track">
@@ -327,7 +269,38 @@
         <div class="service-box">Expert Available 24/7 Home service Repair</div>
     </div>
 </section>
+<div id="database-content">Loading data from Supabase...</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<h2>Meet Our Expert</h2>
+    <div id="expert-info">Loading data...</div>
+<script>
+   const SUPABASE_URL = 'https://cxfulqhalztsxhtbxjqg.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_FecGnNZAmcxza94eyX6TIw_rZmmhAAz';
+    // Initialize the connection
 
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Function to pull data from your 'services' table
+    async function getServicesData() { try {
+const { data, error } = await supabase.from('services').select('*');
+            if (error) {
+  console.error("Supabase Error:", error);
+                document.getElementById('database-content').innerText = "Error connecting to database. Check console.";
+return;
+     }
+            // If successful, display the data on the screen
+ let htmlOutput = "<h3>Our Services from Database:</h3><ul>";
+   data.forEach(service => {
+          htmlOutput += `<li><strong>${service.name}</strong> - ${service.marketing_tag} (${service.availability})</li>`;
+
+            }); htmlOutput += "</ul>";
+            document.getElementById('database-content').innerHTML = htmlOutput;
+        } catch (err) {
+            console.error("System Error:", err);
+        }
+    }
+    // Run the function
+  getServicesData();
+</script>
 </body>
 </html>
 <!-- Poster Section -->
@@ -339,6 +312,7 @@
     <div class="img-center">
         <img src="https://github.com/Riznansari/Homeservice/blob/main/imp4.jpeg?raw=true" alt="Poster 1" width="400">
     </div>
+    
 </section>
 
 <!-- Info Boxes -->
