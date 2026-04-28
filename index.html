@@ -195,46 +195,6 @@
 
 </head>
 <body>
-<h2>Meet Our Expert</h2>
-    <div id="expert-info">Loading data...</div>
-
-    <script>
-        // 2. Initialize the Supabase Connection
-        // Replace these with your actual Supabase Project URL and Anon Key
-        const SUPABASE_URL = 'https://cxfulqhalztsxhtbxjqg.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_FecGnNZAmcxza94eyX6TIw_rZmmhAAz';
-
-        // createClient is available globally because of the CDN link in the <head>
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        // 3. Write a function to fetch the data
-        async function loadExpertDetails() {
-            // Query the 'experts' table
-            const { data, error } = await supabase
-                .from('experts')
-                .select('*');
-
-            // Handle errors
-            if (error) {
-                console.error("Database connection error:", error);
-                document.getElementById('expert-info').innerText = "Failed to load data.";
-                return;
-            }
-
-            // 4. Update your website with the data
-            if (data && data.length > 0) {
-                const expert = data[0]; // Gets the first row (Afroz Shaikh)
-                document.getElementById('expert-info').innerHTML = `
-                    <p><strong>Name:</strong> ${expert.full_name}</p>
-                    <p><strong>Experience:</strong> ${expert.years_exp}</p>
-                    <p><strong>Services Completed:</strong> ${expert.services_done}</p>
-                `;
-            }
-                }
-
-        // 5. Run the function when the page loads
-        loadExpertDetails();
-    </script>
 <header> Home Appliances </header>
 <style>
     /* Full-width banner */
@@ -276,7 +236,65 @@
 </head>
 
 <body>
+<div id="database-content">Loading data from Supabase...</div>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<h2>Meet Our Expert</h2>
+    <div id="expert-info">Loading data...</div>
+<script>
+   const SUPABASE_URL = 'https://cxfulqhalztsxhtbxjqg.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_FecGnNZAmcxza94eyX6TIw_rZmmhAAz';
+    // Initialize the connection
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+
+
+    // Function to pull data from your 'services' table
+
+    async function getServicesData() {
+
+        try {
+
+            const { data, error } = await supabase.from('services').select('*');
+
+
+
+            if (error) {
+
+                console.error("Supabase Error:", error);
+
+                document.getElementById('database-content').innerText = "Error connecting to database. Check console.";
+
+                return;
+
+            }
+
+
+
+            // If successful, display the data on the screen
+
+            let htmlOutput = "<h3>Our Services from Database:</h3><ul>";
+
+            data.forEach(service => {
+
+                htmlOutput += `<li><strong>${service.name}</strong> - ${service.marketing_tag} (${service.availability})</li>`;
+
+            }); htmlOutput += "</ul>";
+            document.getElementById('database-content').innerHTML = htmlOutput;
+        } catch (err) {
+            console.error("System Error:", err);
+        }
+
+    }
+    // Run the function
+  getServicesData();
+
+</script>
 <!-- 🔥 Image Slider Start -->
 <div class="top-slider">
     <div class="slide-track">
